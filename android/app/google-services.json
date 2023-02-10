@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "265047956029",
+    "project_id": "my-dumping-buddy",
+    "storage_bucket": "my-dumping-buddy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:265047956029:android:6f5c01984ac1d3a3562854",
+        "android_client_info": {
+          "package_name": "com.example.waste_management"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "265047956029-etsd0s1guqnmbnjufrh82p6uasubpo2c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUPsVQNm0DlikZLJ0Y6mKknTdXmHpAh-Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "265047956029-etsd0s1guqnmbnjufrh82p6uasubpo2c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
