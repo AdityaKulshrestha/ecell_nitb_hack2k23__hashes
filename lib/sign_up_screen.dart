@@ -178,8 +178,8 @@ class _SignUpPageState extends State<SignUpPage> {
             AuthController.instance.register(emailController.text.trim(), passwordController.text.trim(),nameController.text.trim());
           },
           child: Container(
-            width: w * 0.5,
-            height: h * 0.08,
+            width: w * 0.4,
+            height: h * 0.07,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
                gradient: const LinearGradient(
@@ -201,13 +201,13 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
         ),
         const SizedBox(
-          height: 15,
+          height: 20,
         ),
         RichText(
             text: TextSpan(
                 recognizer: TapGestureRecognizer()..onTap = () => Get.back(),
                 text: "Already have an account?",
-                style: TextStyle(fontSize: 18, color: Colors.grey[500]))),
+                style: TextStyle(fontSize: 20, color: Colors.grey[500]))),
         SizedBox(
           height: w * 0.08,
         ),

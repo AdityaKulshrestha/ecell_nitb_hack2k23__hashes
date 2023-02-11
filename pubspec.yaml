@@ -31,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  dialog_flowtter:
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -41,10 +42,12 @@ dependencies:
   cloud_firestore: ^4.3.2
   flutter_map: ^0.12.0
   latlong: ^0.6.1
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -79,6 +82,7 @@ flutter:
     - img/images/wave-haikei (1).png
     - img/images/wave-haikei (2).png
     - img/images/clean earth.jpg
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
