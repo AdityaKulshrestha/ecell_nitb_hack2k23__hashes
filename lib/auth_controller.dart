@@ -1,9 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:waste_management/main.dart';
 import 'home_screen.dart';
-import 'login_Screen.dart';
+import 'package:waste_management/login_screen.dart';
 
 class AuthController extends GetxController {
   //Authcontroller.instance..
@@ -26,14 +26,20 @@ class AuthController extends GetxController {
       print("login page");
       Get.offAll(() => const LoginPage());
     } else {
-      Get.offAll(() => home_screen());
+      Get.offAll(() => HomePage());
     }
   }
 
-  void register(String email, password) async {
+  void register(String email, password, name) {
     try {
-      await auth.createUserWithEmailAndPassword(
-          email: email, password: password);
+      auth
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        FirebaseFirestore.instance
+            .collection('Users')
+            .doc(auth.currentUser?.uid)
+            .set({"email": email, "name": name});
+      });
     } catch (e) {
       Get.snackbar("about User", "user message",
           backgroundColor: Colors.redAccent,
@@ -51,7 +57,7 @@ class AuthController extends GetxController {
     try {
       await auth.signInWithEmailAndPassword(email: email, password: password);
     } catch (e) {
-      Get.snackbar("about login", "login message",
+      Get.snackbar("about User", "user message",
           backgroundColor: Colors.redAccent,
           snackPosition: SnackPosition.BOTTOM,
           titleText: const Text(

@@ -1,19 +1,23 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+
+import 'package:waste_management/mapscreen.dart';
 import 'package:waste_management/dashboard.dart';
 import 'package:waste_management/reward_page.dart';
 import 'package:waste_management/search_page.dart';
-import 'auth_controller.dart';
 
-class home_screen extends StatefulWidget {
-  home_screen({Key? key}) : super(key: key);
+import '../auth_controller.dart';
+
+class HomePage extends StatefulWidget {
+  HomePage({Key? key}) : super(key: key);
 
   @override
-  State<home_screen> createState() => _home_screenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _home_screenState extends State<home_screen> {
-  List pages = [Reward_page(), SearchPage(), My_page()];
-
+class _HomePageState extends State<HomePage> {
   int CurrentIndex = 0;
 
   void onTap(int index) {
@@ -22,14 +26,21 @@ class _home_screenState extends State<home_screen> {
     });
   }
 
+  static final List<Widget> _widgetOptions = <Widget>[
+    MapPage(),
+    Reward_page(),
+    SearchPage(),
+    HomePage()
+  ];
   @override
   Widget build(BuildContext context) {
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
-          title: Center(child: Text('your Trash buddy')),
-          backgroundColor: Color.fromARGB(255, 0, 148, 133),
-          elevation: 0,
+          title: const Center(child: Text('Your Trash buddy')),
+          backgroundColor: const Color.fromARGB(255, 0, 148, 133),
+          elevation: 0.0,
           actions: <Widget>[
             Padding(
                 padding: const EdgeInsets.only(right: 20.0),
@@ -43,18 +54,9 @@ class _home_screenState extends State<home_screen> {
                   ),
                 )),
           ]),
-      body: pages[0],
-      //  body: Column(
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   children: [
-      //     Container(
-      //       child: Text('WELCOME TO THE APP',
-      //           style:
-      //               const TextStyle(fontSize: 30, fontWeight: FontWeight.bold,color: Color.fromARGB(255, 0, 148, 133))),
-      //       margin: EdgeInsets.all(50),
-      //     ),
-      //   ],
-      // ),
+      body: Center(
+        child: _widgetOptions.elementAt(CurrentIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
@@ -71,7 +73,7 @@ class _home_screenState extends State<home_screen> {
               label: "Home",
               backgroundColor: Color.fromARGB(255, 0, 148, 133)),
           BottomNavigationBarItem(
-              icon: Icon(Icons.location_on_outlined),
+              icon: Icon(Icons.auto_graph_sharp),
               label: "search",
               backgroundColor: Color.fromARGB(255, 0, 148, 133)),
           BottomNavigationBarItem(
