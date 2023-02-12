@@ -15,6 +15,20 @@ Trash Buddy is a unique solution that works on geo intelligence. It analyses the
 
 ![Login Page](https://user-images.githubusercontent.com/73686638/218318460-e8bd0198-fc0e-4c54-b97c-ce13794d0934.png)
 
+![Raise a pickup request](https://user-images.githubusercontent.com/73686638/218319102-0e1a4677-af5d-4203-ab4c-20abee70ce8a.png)
+
+## Admin Features 
+- Optimized navigation routes for the garbage collection vans. 
+- Dashboard of the garbage collection from each ward. 
+- Waste generation and estimation amount for each ward.
+- Statistics for type of waste generation for easy disposal. 
+
+![Admin Page](https://user-images.githubusercontent.com/73686638/218319274-c8acd822-8b99-49a8-b643-3906564ca047.png)
+
+![Dashboard](https://user-images.githubusercontent.com/73686638/218319287-a578d732-4ecc-4291-b71b-c621b167bfbf.png)
+
+
+
 
 
 
