@@ -263,6 +263,7 @@ class _MapPageState extends State<MapPage> {
                                               .collection('Users')
                                               .doc(auth.currentUser?.uid)
                                               .set({
+                                              "name": name,
                                               "long": long,
                                               "lat": lat,
                                               "ward": wardcontroller.text,

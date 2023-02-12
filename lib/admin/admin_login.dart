@@ -126,19 +126,19 @@ class _MyWidgetState extends State<AdminLoginPage> {
               const SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Container(),
-                  ),
-                  const Text(
-                    "Forgot your Password?",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color.fromARGB(228, 108, 124, 134)),
-                  ),
-                ],
-              )
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: Container(),
+              //     ),
+              //     const Text(
+              //       "Forgot your Password?",
+              //       style: TextStyle(
+              //           fontSize: 20,
+              //           color: Color.fromARGB(228, 108, 124, 134)),
+              //     ),
+              //   ],
+              // )
             ],
           ),
         ),

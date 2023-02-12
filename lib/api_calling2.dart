@@ -2,7 +2,12 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import 'api_calling2.dart';
+import 'api_calling3.dart';
 
 class WSPage extends StatefulWidget {
   String input;
@@ -12,75 +17,9 @@ class WSPage extends StatefulWidget {
 }
 
 class _WSPageState extends State<WSPage> {
-  String _predictionJson = 'Predicting...';
-  
-
-  @override
-  void initState() {
-    super.initState();
-    _predictImage();
-  }
-
-Future<void> _predictImage() async {
-  String imagePath = widget.input;
-  final response = await http.post(Uri.parse("https://keremberke-garbage-object-detection.hf.space/run/predict"),
-      headers: {"Content-Type": "multipart/form-data"},
-      body: json.encode({
-        "data": [
-          "data:$imagePath;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAACklEQVR4nGMAAQAABQABDQottAAAAABJRU5ErkJggg==",
-          0.25,
-          "keremberke/yolov5n-garbage",
-        ]
-      })).then((response) {
-          print("Response status: ${response.statusCode}");
-          print("Response body: ${response.body}");
-        });
-
-  // print(response);
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       _predictionJson = response.body;
-  //     });
-  //   } else {
-  //     setState(() {
-  //       _predictionJson = 'Failed to predict image';
-  //     });
-  //   }
-
-  // Future<void> _predictImage() async {
-  //   String apiKey = "w6xJcseDTjohUB0FwFwL";
-  //   String projectName = "garbage-classification-3";
-  //   int version = 2;
-  //   String imagePath = widget.input;
-  //   int confidence = 40;
-  //   int overlap = 30;
-  //   final imageBytes = await File(imagePath).readAsBytes();
-  //   final imageBase64 = base64Encode(imageBytes);
-  //   print(imagePath);
-
-  //   final response = await http.post(
-  //       Uri.parse(
-  //           'https://detect.roboflow.com/$projectName/$version?api_key=$apiKey&name=$imagePath'),
-  //       headers: <String, String>{
-  //         'Content-Type': 'application/x-www-form-urlencoded',
-        
-  //       },
-  //       body: jsonEncode(<String, dynamic>{
-  //         'confidence': confidence,
-  //         'overlap': overlap,
-  //         'base64_image': imageBase64,
-  //       }));
-  //   print(response);
-  //   if (response.statusCode == 200) {
-  //     setState(() {
-  //       _predictionJson = response.body;
-  //     });
-  //   } else {
-  //     setState(() {
-  //       _predictionJson = 'Failed to predict image';
-  //     });
-  //   }
-  }
+  var isText = false;
+  var output;
+  var data;
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +31,38 @@ Future<void> _predictImage() async {
           title: const Text('Roboflow Prediction'),
         ),
         body: Center(
-          child: Text(_predictionJson),
+          child: isText
+              ? Text(
+                  (data[0] == null)
+                      ? "Try Again!"
+                      : "This trash is ${data[0]["label"]}",
+                  style: TextStyle(fontSize: 30),
+                )
+              : ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      output = await query(widget.input);
+                      print(output);
+                      isText = true;
+                    } catch (e) {
+                      isText = false;
+                      Get.snackbar("about User", "user message",
+                          backgroundColor: Colors.redAccent,
+                          snackPosition: SnackPosition.BOTTOM,
+                          titleText: const Text(
+                            "Failed! Try again",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          messageText: Text(e.toString(),
+                              style: const TextStyle(color: Colors.white)));
+                    }
+                    data = json.decode(output);
+                    setState(() {});
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 0, 148, 133)),
+                  child: const Text('Predict',
+                      style: TextStyle(color: Colors.white))),
         ),
       ),
     );

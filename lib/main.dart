@@ -5,7 +5,6 @@ import 'package:waste_management/screens/search_page.dart';
 import 'package:waste_management/screens/sign_up_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:waste_management/screens/statistics.dart';
 import 'auth_controller.dart';
 
 Future<void> main() async {
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,

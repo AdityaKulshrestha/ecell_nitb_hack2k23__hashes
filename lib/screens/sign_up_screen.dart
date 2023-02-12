@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 
 import '../auth_controller.dart';
 
-
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
 
@@ -13,14 +12,11 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
-
-
   @override
   Widget build(BuildContext context) {
     final emailController = TextEditingController();
     final passwordController = TextEditingController();
     final nameController = TextEditingController();
-
 
     double w = MediaQuery.of(context).size.width;
     double h = MediaQuery.of(context).size.height;
@@ -28,7 +24,6 @@ class _SignUpPageState extends State<SignUpPage> {
       resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white,
       body: Column(children: [
-        
         Container(
           width: w,
           height: h * 0.3,
@@ -172,17 +167,17 @@ class _SignUpPageState extends State<SignUpPage> {
         const SizedBox(
           height: 20,
         ),
-     
         GestureDetector(
           onTap: () {
-            AuthController.instance.register(emailController.text.trim(), passwordController.text.trim(),nameController.text.trim());
+            AuthController.instance.register(emailController.text.trim(),
+                passwordController.text.trim(), nameController.text.trim());
           },
           child: Container(
             width: w * 0.4,
             height: h * 0.07,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30),
-               gradient: const LinearGradient(
+                gradient: const LinearGradient(
                   colors: [
                     Color.fromARGB(255, 240, 245, 249),
                     Color.fromARGB(255, 0, 148, 133)
