@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class RewardPage extends StatefulWidget {
@@ -8,6 +10,23 @@ class RewardPage extends StatefulWidget {
 }
 
 class _RewardPageState extends State<RewardPage> {
+  String name = "";
+  FirebaseAuth auth = FirebaseAuth.instance;
+  _fetch() async {
+    final firebaseUser = FirebaseAuth.instance.currentUser;
+    if (firebaseUser != null) {
+      await FirebaseFirestore.instance
+          .collection('Users')
+          .doc(firebaseUser.uid)
+          .get()
+          .then((ds) {
+        name = ds.data()!['name'];
+      }).catchError((e) {
+        print(e);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -71,13 +90,24 @@ class _RewardPageState extends State<RewardPage> {
                                     const SizedBox(
                                       height: 90,
                                     ),
-                                    const Text(
-                                      'Tushar Sharma',
-                                      style: TextStyle(
-                                        color: Color.fromRGBO(27, 181, 216, 1),
-                                        fontFamily: 'Nunito',
-                                        fontSize: 37,
-                                      ),
+                                    FutureBuilder(
+                                      future: _fetch(),
+                                      builder: ((context, snapshot) {
+                                        if (snapshot.connectionState !=
+                                            ConnectionState.done) {
+                                          return const Text(
+                                              'Loading data...Please Wait');
+                                        } else {
+                                          return Text(
+                                            '$name',
+                                            style: const TextStyle(
+                                                fontSize: 37,
+                                                color: Color.fromRGBO(
+                                                    27, 181, 216, 1),
+                                                fontWeight: FontWeight.w500),
+                                          );
+                                        }
+                                      }),
                                     ),
                                     const SizedBox(
                                       height: 5,

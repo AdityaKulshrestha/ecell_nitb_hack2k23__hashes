@@ -2,22 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:waste_management/screens/mapscreen.dart';
-import 'package:waste_management/screens/reward_page.dart';
-import 'package:waste_management/screens/search_page.dart';
-import 'package:waste_management/screens/user_dash.dart';
+import 'package:waste_management/admin/admin_dash.dart';
+import 'package:waste_management/admin/admin_map.dart';
+
 
 import '../auth_controller.dart';
-import '../getLongLatAddress.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+
+class AHomePage extends StatefulWidget {
+  AHomePage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<AHomePage> createState() => _AHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _AHomePageState extends State<AHomePage> {
   int CurrentIndex = 0;
 
   void onTap(int index) {
@@ -27,10 +26,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   static final List<Widget> _widgetOptions = <Widget>[
-    MapPage(),
-    RewardPage(),
-    SearchPage(),
-    UserDash()
+   AdminMapPage(),
+   AdminDashPage()
   ];
   @override
   Widget build(BuildContext context) {
@@ -38,10 +35,23 @@ class _HomePageState extends State<HomePage> {
     double h = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child: Text('Trash buddy')),
-        backgroundColor: const Color.fromARGB(255, 0, 148, 133),
-        elevation: 0.0,
-      ),
+          title: const Center(child: Text('Admin Page')),
+          backgroundColor: const Color.fromARGB(255, 0, 148, 133),
+          elevation: 0.0,
+          // actions: <Widget>[
+          //   Padding(
+          //       padding: const EdgeInsets.only(right: 20.0),
+          //       child: GestureDetector(
+          //         onTap: () {
+          //           AuthController.instance.logOut();
+          //         },
+          //         child: const Icon(
+          //           Icons.logout_rounded,
+          //           size: 26.0,
+          //         ),
+          //       )),
+          // ]
+          ),
       body: Center(
         child: _widgetOptions.elementAt(CurrentIndex),
       ),
@@ -59,14 +69,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
               icon: Icon(Icons.home),
               label: "Home",
-              backgroundColor: Color.fromARGB(255, 0, 148, 133)),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.auto_graph_sharp),
-              label: "search",
-              backgroundColor: Color.fromARGB(255, 0, 148, 133)),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.leaderboard),
-              label: "camera",
               backgroundColor: Color.fromARGB(255, 0, 148, 133)),
           BottomNavigationBarItem(
               icon: Icon(Icons.dashboard_outlined),

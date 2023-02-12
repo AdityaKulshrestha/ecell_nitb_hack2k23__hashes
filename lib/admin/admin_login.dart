@@ -1,18 +1,18 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:waste_management/admin/admin_sign.dart';
 import '../auth_controller.dart';
-import '../admin/admin_login.dart';
-import 'sign_up_screen.dart';
+import '../screens/sign_up_screen.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class AdminLoginPage extends StatefulWidget {
+  const AdminLoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _MyWidgetState();
+  State<AdminLoginPage> createState() => _MyWidgetState();
 }
 
-class _MyWidgetState extends State<LoginPage> {
+class _MyWidgetState extends State<AdminLoginPage> {
   var emailController = TextEditingController();
   var passwordController = TextEditingController();
   @override
@@ -28,7 +28,7 @@ class _MyWidgetState extends State<LoginPage> {
           height: h * 0.3,
           decoration: const BoxDecoration(
               image: DecorationImage(
-            image: AssetImage("img/images/wave-haikei (1).png"),
+            image: AssetImage("img/images/wave-haikei (2).png"),
             fit: BoxFit.fill,
           )),
         ),
@@ -39,7 +39,7 @@ class _MyWidgetState extends State<LoginPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                "Hello! Welcome to Trash Buddy",
+                "Admin Page",
                 style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
               ),
               const SizedBox(
@@ -61,7 +61,8 @@ class _MyWidgetState extends State<LoginPage> {
                           blurRadius: 10,
                           spreadRadius: 7,
                           offset: Offset(1, 1),
-                          color: Colors.grey.withOpacity(0.2))
+                          color:
+                              Colors.grey.withOpacity(0.2))
                     ]),
                 child: TextField(
                   controller: emailController,
@@ -96,7 +97,8 @@ class _MyWidgetState extends State<LoginPage> {
                           blurRadius: 10,
                           spreadRadius: 7,
                           offset: Offset(1, 1),
-                          color: Colors.grey.withOpacity(0.2))
+                          color:
+                              Colors.grey.withOpacity(0.2))
                     ]),
                 child: TextField(
                   controller: passwordController,
@@ -145,7 +147,7 @@ class _MyWidgetState extends State<LoginPage> {
         ),
         GestureDetector(
           onTap: () {
-            AuthController.instance.login(
+            AuthController.instance.alogin(
                 emailController.text.trim(), passwordController.text.trim());
           },
           child: Container(
@@ -187,24 +189,7 @@ class _MyWidgetState extends State<LoginPage> {
                       fontSize: 18,
                       fontWeight: FontWeight.bold),
                   recognizer: TapGestureRecognizer()
-                    ..onTap = () => Get.to(() => SignUpPage()))
-            ])),
-        SizedBox(
-          height: w * 0.05,
-        ),
-        RichText(
-            text: TextSpan(
-                text: "Are you a admin?",
-                style: TextStyle(color: Colors.grey[500], fontSize: 18),
-                children: [
-              TextSpan(
-                  text: " Login here",
-                  style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () => Get.to(() => AdminLoginPage()))
+                    ..onTap = () => Get.to(() => AdminSignUpPage()))
             ]))
       ]),
     );

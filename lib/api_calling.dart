@@ -15,8 +15,10 @@ Future<String> query4(String prompt) async {
       await http.post(Uri.https("api.openai.com", "/v1/completions"),
           headers: Header,
           body: jsonEncode({
-            "model": "code-davinci-003",
-            "prompt": prompt,
+            "model": "text-davinci-003",
+            "prompt":
+                "Limit your response only regarding waste management else reply I am only limited to waste management queries\n \n " +
+                    prompt,
             "temperature": 0,
             "max_tokens": 200,
             'top_p': 1,
