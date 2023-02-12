@@ -15,7 +15,7 @@ Future<String> query4(String prompt) async {
       await http.post(Uri.https("api.openai.com", "/v1/completions"),
           headers: Header,
           body: jsonEncode({
-            "model": "text-davinci-003",
+            "model": "code-davinci-003",
             "prompt": prompt,
             "temperature": 0,
             "max_tokens": 200,

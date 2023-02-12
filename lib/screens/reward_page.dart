@@ -1,16 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter_vector_icons/flutter_vector_icons.dart';
 
-class Reward_page extends StatefulWidget {
-  const Reward_page({super.key});
+class RewardPage extends StatefulWidget {
+  const RewardPage({super.key});
 
   @override
-  State<Reward_page> createState() => _Reward_pageState();
+  State<RewardPage> createState() => _RewardPageState();
 }
 
-class _Reward_pageState extends State<Reward_page> {
+class _RewardPageState extends State<RewardPage> {
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -33,16 +30,16 @@ class _Reward_pageState extends State<Reward_page> {
         Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
-            physics: const BouncingScrollPhysics(),
+            physics: BouncingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 73),
               child: Column(
                 children: [
                   const Text(
-                    'My Profile',
+                    'Your Credit Score',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color.fromARGB(255, 6, 49, 52),
+                      color: Colors.white,
                       fontSize: 40,
                     ),
                   ),
@@ -124,32 +121,27 @@ class _Reward_pageState extends State<Reward_page> {
                                 ),
                               ),
                             ),
-                            Positioned(
-                              top: 0,
-                              left: 0,
-                              right: 0,
-                              child: Center(
-                                child: Container(
-                                  
-                                  // decoration: BoxDecoration(
-                                  //     image: DecorationImage(
-                                  //         image: AssetImage(
-                                  //             'img/images/tushar.jpg')),
-                                  //     shape: BoxShape.circle,
-                                  //     boxShadow: [
-                                  //       BoxShadow(
-                                  //           color: Color.fromARGB(
-                                  //               255, 0, 148, 133))
-                                  //     ]),
-                                  child: Image.asset(
-                                    'img/images/tushar.jpg',
-                                    width: innerWidth * 0.40,
-                                    fit: BoxFit.fill,
-                                    
-                                    
+                            Center(
+                              child: Column(
+                                children: [
+                                  Container(
+                                    width: 150,
+                                    height: 150,
+                                    decoration: const BoxDecoration(
+                                        image: DecorationImage(
+                                            image: AssetImage(
+                                                'img/images/tushar.jpg')),
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              color: Color.fromARGB(
+                                                  255, 0, 148, 133))
+                                        ]),
                                   ),
-                                  
-                                ),
+                                  const SizedBox(
+                                    height: 20,
+                                  )
+                                ],
                               ),
                             ),
                           ],

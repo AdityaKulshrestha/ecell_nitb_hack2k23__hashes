@@ -3,12 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
-import 'package:waste_management/mapscreen.dart';
-import 'package:waste_management/dashboard.dart';
-import 'package:waste_management/reward_page.dart';
-import 'package:waste_management/search_page.dart';
+import 'package:waste_management/screens/mapscreen.dart';
 
-import '../auth_controller.dart';
+import 'package:waste_management/screens/reward_page.dart';
+import 'package:waste_management/screens/search_page.dart';
+import 'package:waste_management/screens/user_dash.dart';
+
+import '../../auth_controller.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -28,9 +29,9 @@ class _HomePageState extends State<HomePage> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     MapPage(),
-    Reward_page(),
+    RewardPage(),
     SearchPage(),
-    HomePage()
+    UserDash()
   ];
   @override
   Widget build(BuildContext context) {

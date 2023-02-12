@@ -2,8 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'home_screen.dart';
-import 'package:waste_management/login_screen.dart';
+import 'package:waste_management/screens/statistics.dart';
+import 'screens/home_screen.dart';
+import 'package:waste_management/screens/login_screen.dart';
 
 class AuthController extends GetxController {
   //Authcontroller.instance..

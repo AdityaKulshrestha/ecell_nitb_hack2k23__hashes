@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:waste_management/login_Screen.dart';
+import 'package:waste_management/screens/login_Screen.dart';
 import 'package:get/get.dart';
-import 'package:waste_management/search_page.dart';
-import 'package:waste_management/sign_up_screen.dart';
+import 'package:waste_management/screens/search_page.dart';
+import 'package:waste_management/screens/sign_up_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:waste_management/screens/statistics.dart';
 import 'auth_controller.dart';
 
 Future<void> main() async {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(),
+      home:LoginPage(),
     );
   }
 }

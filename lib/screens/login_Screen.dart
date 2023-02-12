@@ -1,8 +1,8 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'auth_controller.dart';
-import 'sign_up_screen.dart';
+import 'package:waste_management/screens/sign_up_screen.dart';
+import '../auth_controller.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
